@@ -1,0 +1,16 @@
+#déclare la variable jour et lui atribue le jour/mois/année
+jour=$(date +%d-%m-%y)
+     f : utilise le fichier donné en paramètre
+    v : active le mode « verbeux » (bavard, affiche ce qu'il fait).
+
+Puis selon la compression souhaitée :
+
+    z : ajoute la compression Gzip.
+
+heure=$(date +%H:%M)
+fichier=number_connection-$jour-$heure.log
+
+#     f : utilise le fichier donné en paramètre   z : ajoute la compression Gzip.
+
+sudo grep Accepted /var/log/auth.log >> $fichier && tar -zf $fichier ./
+mv $fichier.tar.gz /home/pikadmin/Job_8/Backup
